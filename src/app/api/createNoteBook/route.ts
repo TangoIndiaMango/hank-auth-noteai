@@ -8,7 +8,7 @@ import { NextResponse } from "next/server"
 
 export const runtime = "edge";
 
-export async function POST(req: NextResponse) {
+export async function POST(req: Request) {
     const { userId } = auth()
     if (!userId) {
         return new NextResponse("unauthorized", { status: 401 })
