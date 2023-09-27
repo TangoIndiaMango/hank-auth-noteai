@@ -53,7 +53,7 @@ const TipTapEditor = ({ note }: Props) => {
             setEditorState(editor.getHTML())
         },
     })
-    const debounceEditorState = useDebounce(editorState, 1500)
+    const debounceEditorState = useDebounce(editorState, 5000)
     const lastCompletion = useRef('');
 
     useEffect(() => {

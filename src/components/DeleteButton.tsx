@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation';
 import { Loader2, Trash } from 'lucide-react';
 import ConfirmationDialog from './ConfirmationDialog';
 import { toast } from 'react-toastify';
+import ClipLoader from 'react-spinners/ClipLoader';
 
 type Props = {
     noteId: number;
@@ -31,6 +32,17 @@ const DeleteButton: React.FC<Props> = ({ noteId }) => {
             onSuccess: () => {
                 toast.success('Note Deleted 🅰')
                 router.push('/dashboard');
+                return (
+                    <>
+                        <ClipLoader
+                            color="black"
+                            size={150}
+                            className='flex justify-center items-center'
+                            aria-label="Loading Spinner"
+                            data-testid="loader"
+                        />
+                    </>
+                )
             },
             onError: (err) => {
                 console.log(err);

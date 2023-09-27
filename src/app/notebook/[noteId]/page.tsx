@@ -1,7 +1,7 @@
 import { db } from '@/lib/db'
 import { $notes } from '@/lib/db/schema'
 import { auth } from '@clerk/nextjs'
-import { redirect } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import React from 'react'
 import { eq, and } from "drizzle-orm";
 import Link from 'next/link'
@@ -10,6 +10,7 @@ import { clerk } from '@/lib/clerk-server'
 import TipTapEditor from '@/components/TipTapEditor'
 import DeleteButton from '@/components/DeleteButton'
 import { toast } from 'react-toastify'
+import ClipLoader from "react-spinners/ClipLoader";
 
 type Props = {
     params: {
@@ -18,9 +19,22 @@ type Props = {
 }
 
 const NoteBookPage = async ({ params: { noteId } }: Props) => {
+    const router = useRouter()
     const { userId } = await auth()
     if (!userId) {
-        return redirect("/dashboard")
+        toast.error("Please Login Again")
+        router.push("/")
+        return (
+            <>
+                <ClipLoader
+                    color="black"
+                    size={150}
+                    className='flex justify-center items-center'
+                    aria-label="Loading Spinner"
+                    data-testid="loader"
+                />
+            </>
+        )
     }
     const user = await clerk.users.getUser(userId)//get first name and last name
     const notes = await db.select().from($notes).where(
@@ -32,10 +46,21 @@ const NoteBookPage = async ({ params: { noteId } }: Props) => {
 
     if (notes.length !== 1) {
         toast.error("You dont have any Notes")
-        redirect("/dashboard")
+        router.push("/dashboard")
+        return (
+            <>
+                <ClipLoader
+                    color="black"
+                    size={150}
+                    className='flex justify-center items-center'
+                    aria-label="Loading Spinner"
+                    data-testid="loader"
+                />
+            </>
+        )
     }
 
-    
+
 
     const note = notes[0];
 
@@ -43,9 +68,9 @@ const NoteBookPage = async ({ params: { noteId } }: Props) => {
         <div className='min-h-screen bg-slate-200 p-8'>
             <div className="max-w-4xl mx-auto">
                 <div className="border shadow-xl border-stone-200 rounded-lg p-4 flex items-center">
-                <Link href="/dashboard">
-                    <Button className='bg-slate-900' size="sm">Back</Button>
-                </Link>
+                    <Link href="/dashboard">
+                        <Button className='bg-slate-900' size="sm">Back</Button>
+                    </Link>
 
                     <div className='w-3'></div>
                     <span className='font-semibold'>{user.firstName} {user.lastName}</span>
