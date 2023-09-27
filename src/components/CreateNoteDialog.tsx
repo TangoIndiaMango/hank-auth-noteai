@@ -61,7 +61,7 @@ const CreateNoteDialog = (props: Props) => {
             },
             onError: (error) => {
                 toast.error("Failed to create notebook", error as any)
-                router.push("/dashboard")
+                router.push("/")
                 console.log(error);
             },
         })

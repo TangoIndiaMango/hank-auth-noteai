@@ -8,12 +8,32 @@ import { eq } from 'drizzle-orm';
 import { ArrowLeft } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import React from 'react'
+import ClipLoader from 'react-spinners/ClipLoader';
+import { toast } from 'react-toastify';
 
 type Props = {}
 
 const DashBoardPage = async (props: Props) => {
+    const router = useRouter()
+
     const { userId } = auth()
+    if (!userId) {
+        toast.error("Please Login Again")
+        router.push("/")
+        return (
+            <>
+                <ClipLoader
+                    color="black"
+                    size={150}
+                    className='flex justify-center items-center'
+                    aria-label="Loading Spinner"
+                    data-testid="loader"
+                />
+            </>
+        )
+    }
     const notes = await db.select().from($notes).where(eq($notes.userId, userId!))
     return (
         <div className="bg-slate-200 min-h-screen">
