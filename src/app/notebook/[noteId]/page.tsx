@@ -1,7 +1,7 @@
 import { db } from '@/lib/db'
 import { $notes } from '@/lib/db/schema'
 import { auth } from '@clerk/nextjs'
-import { useRouter } from 'next/navigation'
+import { redirect } from 'next/navigation'
 import React from 'react'
 import { eq, and } from "drizzle-orm";
 import Link from 'next/link'
@@ -19,22 +19,12 @@ type Props = {
 }
 
 const NoteBookPage = async ({ params: { noteId } }: Props) => {
-    const router = useRouter()
+
     const { userId } = await auth()
     if (!userId) {
         toast.error("Please Login Again")
-        router.push("/")
-        return (
-            <>
-                <ClipLoader
-                    color="black"
-                    size={150}
-                    className='flex justify-center items-center'
-                    aria-label="Loading Spinner"
-                    data-testid="loader"
-                />
-            </>
-        )
+        redirect("/")
+      
     }
     const user = await clerk.users.getUser(userId)//get first name and last name
     const notes = await db.select().from($notes).where(
@@ -46,18 +36,7 @@ const NoteBookPage = async ({ params: { noteId } }: Props) => {
 
     if (notes.length !== 1) {
         toast.error("You dont have any Notes")
-        router.push("/dashboard")
-        return (
-            <>
-                <ClipLoader
-                    color="black"
-                    size={150}
-                    className='flex justify-center items-center'
-                    aria-label="Loading Spinner"
-                    data-testid="loader"
-                />
-            </>
-        )
+        redirect("/dashboard")
     }
 
 
