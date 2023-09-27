@@ -1,6 +1,9 @@
 import { ClerkProvider } from '@clerk/nextjs'
 import './global.css'
 import Provider from '@/components/Provider'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 export const metadata = {
   title: 'NotesAI',
@@ -14,8 +17,22 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
+
         <Provider>
-          <body>{children}</body>
+
+          <body>
+            <ToastContainer
+              position="top-right"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+            />
+            {children}</body>
         </Provider>
 
       </html>

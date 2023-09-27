@@ -7,6 +7,7 @@ import { Button } from './ui/button'
 import { useMutation } from '@tanstack/react-query'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
+import { toast } from 'react-toastify'
 
 type Props = {}
 
@@ -33,25 +34,28 @@ const CreateNoteDialog = (props: Props) => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (input === "") {
-            window.alert("Please enter a name for your notebook")
+            toast.error("Note name cannot be empty")
             return
         }
         createNotebook.mutate(undefined, {
             onSuccess: ({note_id}) => {
                 console.log(`created new note ${note_id}`)
-                // hit an endpoint to upload temp image url to permanent firebase
+                toast.success('New Note Successfully Created 😇')
+
                 uploadToFirebase.mutate(note_id)
                 router.push(`/notebook/${note_id}`)
+                toast.success('Opening Note... 📖')
 
             },
             onError: (error) => {
+                toast.error("Failed to create notebook", error as any)
                 console.log(error);
-                window.alert("Failed to create notebook")
             },
         })
 
     }
     return (
+        <>
         <Dialog>
             <DialogTrigger>
                 <div className='border-dashed border-2 flex border-slate-500 h-full rounded-lg items-center justify-center sm:flex-col hover:shadow-xl transition hover:-translate-y-1 flex-row p-4'>
@@ -73,16 +77,18 @@ const CreateNoteDialog = (props: Props) => {
                     <Input value={input} onChange={(e: any) => setInput(e.target.value)} placeholder="Name...." />
                     <div className="h-4"></div>
                     <div className="flex items-center gap-2">
-                        <Button type="reset" variant={'secondary'}>Cancel</Button>
+                        {/* create usestate for cancel */}
+                        <Button type="reset" variant={'secondary'} >Cancel</Button>  
                         <Button type="submit" disabled={createNotebook.isLoading} className='bg-slate-600'>{createNotebook.isLoading && (
                             <Loader2 className='w-4 h-4 mr-2 animate-spin'/>
 
-                        )} Create</Button>
+                        )} Create </Button>
 
                     </div>
                 </form>
             </DialogContent>
         </Dialog>
+        </>
     )
 }
 

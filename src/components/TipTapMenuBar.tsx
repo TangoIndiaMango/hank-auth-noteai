@@ -8,7 +8,7 @@ type Props = {
 
 const TipTapMenuBar = ({ editor }: Props) => {
     return (
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-3">
             <button onClick={() => editor.chain().focus().toggleBold().run()} disabled={!editor.can().chain().focus().toggleBold().run()}
                 className={editor.isActive("bold") ? "is-active" : ""}>
                 <Bold className="w-6 h-6" />
@@ -35,11 +35,11 @@ const TipTapMenuBar = ({ editor }: Props) => {
                 className={editor.isActive("heading", { level: 2 }) ? "is-active" : ""}>
                 <Heading2 className="w-6 h-6" />
             </button>
-            <button onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()} disabled={!editor.can().chain().focus().toggleHeading({ level: 4 }).run()}
+            <button onClick={() => editor.chain().focus().toggleHeading({ level: 4 }).run()} disabled={!editor.can().chain().focus().toggleHeading({ level: 4 }).run()}
                 className={editor.isActive("heading", { level: 4 }) ? "is-active" : ""}>
                 <Heading4 className="w-6 h-6" />
             </button>
-            <button onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()} disabled={!editor.can().chain().focus().toggleHeading({ level: 6 }).run()}
+            <button onClick={() => editor.chain().focus().toggleHeading({ level: 6 }).run()} disabled={!editor.can().chain().focus().toggleHeading({ level: 6 }).run()}
                 className={editor.isActive("heading", { level: 6 }) ? "is-active" : ""}>
                 <Heading6 className="w-6 h-6" />
             </button>
@@ -56,7 +56,7 @@ const TipTapMenuBar = ({ editor }: Props) => {
                 <CodepenIcon className="w-6 h-6" />
             </button>
             <button onClick={() => editor.chain().focus().toggleBlockquote().run()} disabled={!editor.can().chain().focus().toggleBlockquote().run()}
-                className={editor.isActive("blockquote") ? "is-active" : ""}>
+                className={editor.isActive("blockQuote") ? "is-active" : ""}>
                 <Quote className="w-6 h-6" />
             </button>
             <button onClick={() => editor.chain().focus().undo().run()} disabled={!editor.can().chain().focus().undo().run()}>

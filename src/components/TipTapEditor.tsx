@@ -11,10 +11,13 @@ import axios from 'axios';
 import Text from "@tiptap/extension-text";
 import { NoteType } from '@/lib/db/schema';
 import { useCompletion } from 'ai/react';
+import { Loader2 } from 'lucide-react';
+import { toast } from 'react-toastify';
 
 type Props = { note: NoteType }
 
 const TipTapEditor = ({ note }: Props) => {
+    // on entry to the webpage, show the notebook title or last saved spot
     const [editorState, setEditorState] = useState(note.editorState || `<h1>${note.name}</h1>`)
     const { complete, completion } = useCompletion({
         api: '/api/completion'
@@ -50,7 +53,7 @@ const TipTapEditor = ({ note }: Props) => {
             setEditorState(editor.getHTML())
         },
     })
-    const debounceEditorState = useDebounce(editorState, 500)
+    const debounceEditorState = useDebounce(editorState, 1500)
     const lastCompletion = useRef('');
 
     useEffect(() => {
@@ -67,23 +70,30 @@ const TipTapEditor = ({ note }: Props) => {
         //save to db
         if (debounceEditorState == "") return
         saveNote.mutate(undefined, {
-            onSuccess: data => { console.log("success Update", data) },
-            onError: err => { console.log("an error occured", err) }
+            onSuccess: data => { toast.success("Note Saved") },
+            onError: err => {
+                toast.error("There was a problem saving your note.")
+                console.log("an error occured", err)
+            }
         })
-        console.log(debounceEditorState)
+        // console.log(debounceEditorState)
 
-        return () => {
-
-        }
-    }, [saveNote, debounceEditorState])
+        return () => { }
+    }, [debounceEditorState])
 
     return (
         <>
             <div className="flex">
                 {editor && <TipTapMenuBar editor={editor} />}
-                <Button className='ml-2' disabled variant={"outline"}>{
-                    saveNote.isLoading ? "Saving..." : "Saved"
+                <Button className='ml-auto' disabled variant={"outline"}>{
+                    saveNote.isLoading ? (
+                        <>
+                            <Loader2 className='w-4 h-4 mr-2 animate-spin' />
+                            <p>Saving....</p>
+                        </>
+                    ) : (<p>Saved</p>)
                 }</Button>
+
             </div>
             <div className="prose prose-sm w-full mt-4">
                 <EditorContent editor={editor} />
