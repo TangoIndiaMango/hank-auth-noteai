@@ -5,7 +5,7 @@ export const $notes = pgTable('notes', {
     name: text('name').notNull(),
     createdAt: timestamp('created_at').notNull().defaultNow(),
     imageUrl: text('imageUrl'),
-    userId: text('user_id').notNull(),  //comes from clerk userid
+    userId: text('user_id').notNull(),  //comes from hanko auth userid
     editorState: text("editor_state")
 })
 

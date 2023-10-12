@@ -1,6 +1,5 @@
 import { db } from '@/lib/db'
 import { $notes } from '@/lib/db/schema'
-import { auth } from '@clerk/nextjs'
 import { redirect } from 'next/navigation'
 import React from 'react'
 import { eq, and } from "drizzle-orm";
@@ -11,6 +10,8 @@ import TipTapEditor from '@/components/TipTapEditor'
 import DeleteButton from '@/components/DeleteButton'
 import { toast } from 'react-toastify'
 import ClipLoader from "react-spinners/ClipLoader";
+import { userID } from '@/app/api/createNoteBook/route'
+
 
 type Props = {
     params: {
@@ -20,13 +21,14 @@ type Props = {
 
 const NoteBookPage = async ({ params: { noteId } }: Props) => {
 
-    const { userId } = await auth()
+    const userId = await userID()
     if (!userId) {
         toast.error("Please Login Again")
         redirect("/")
       
     }
-    const user = await clerk.users.getUser(userId)//get first name and last name
+
+    // const user = await clerk.users.getUser(userId)//get first name and last name
     const notes = await db.select().from($notes).where(
         and(
             eq($notes.id, parseInt(noteId)),
@@ -52,7 +54,7 @@ const NoteBookPage = async ({ params: { noteId } }: Props) => {
                     </Link>
 
                     <div className='w-3'></div>
-                    <span className='font-semibold'>{user.firstName} {user.lastName}</span>
+                    <span className='font-semibold'>Welcome</span>
                     <span className='inline-block mx-1'>/</span>
                     <span className='text-stone-900 font-semibold'>{note.name}</span>
                     <div className="ml-auto">

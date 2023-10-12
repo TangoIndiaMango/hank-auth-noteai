@@ -98,6 +98,11 @@
   dependencies:
     csstype "3.1.1"
 
+"@denysvuika/preact-translate@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@denysvuika/preact-translate/-/preact-translate-0.5.0.tgz#06fe1d31497b13734def2cc8a64a68001b03bd2f"
+  integrity sha512-hcWbmA5+05JRYGPhl64kDiJ+rWLOKe4tDi0y7cXVKe+hwu6H0KphyAwLvVbCSTTtnfXvAijnEZMOf/kCsdPFrQ==
+
 "@drizzle-team/studio@^0.0.5":
   version "0.0.5"
   resolved "https://registry.yarnpkg.com/@drizzle-team/studio/-/studio-0.0.5.tgz#d2488ab4e8e755cc69287e2267cc4033a0e6ca35"
@@ -1088,6 +1093,29 @@
     "@tanstack/query-core" "4.35.3"
     use-sync-external-store "^1.2.0"
 
+"@teamhanko/hanko-elements@^0.8.4":
+  version "0.8.4"
+  resolved "https://registry.yarnpkg.com/@teamhanko/hanko-elements/-/hanko-elements-0.8.4.tgz#44356f7ab92db57d597985286b02729f5c4f55a9"
+  integrity sha512-wjZbRbXG45iPsH9D22KwFrI4nAXxX8yKO88CxGeDKXzzkwGRP+R+ysvJt/1LvRSX6sul6Wemk7osh+dZD6K8tw==
+  dependencies:
+    "@denysvuika/preact-translate" "^0.5.0"
+    "@teamhanko/hanko-frontend-sdk" "^0.8.4"
+    "@teamhanko/preact-custom-element" "^4.2.2"
+    classnames "^2.3.2"
+    preact "^10.13.1"
+
+"@teamhanko/hanko-frontend-sdk@^0.8.4":
+  version "0.8.4"
+  resolved "https://registry.yarnpkg.com/@teamhanko/hanko-frontend-sdk/-/hanko-frontend-sdk-0.8.4.tgz#7c1e37c06fbf2823343c1b21e674d3662a875b55"
+  integrity sha512-Lt9WnQ6Esmp+x7iGiW6nhuKqvYexXCanXH2XQETniJY9+HnXVSI5BTjuF9RlajN2/oaSzSKzW0HdHcrZWDGf5g==
+  dependencies:
+    "@types/js-cookie" "^3.0.3"
+
+"@teamhanko/preact-custom-element@^4.2.2":
+  version "4.2.2"
+  resolved "https://registry.yarnpkg.com/@teamhanko/preact-custom-element/-/preact-custom-element-4.2.2.tgz#67e9ebb54da2607e818f360be0b69e9fde9c01ee"
+  integrity sha512-3djCQr25IxQIgpidxD8J0fTQ7/hMuoa5Nmv7delQc6sX4kXgv9e/pE01cywpmGZLi69H1KUH4dmZ4cPPJQrsQQ==
+
 "@tiptap/core@^2.1.11":
   version "2.1.11"
   resolved "https://registry.yarnpkg.com/@tiptap/core/-/core-2.1.11.tgz#06bbd189c6b2dffe58b1c80f848737d76fb012bd"
@@ -1313,6 +1341,11 @@
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/@types/http-errors/-/http-errors-2.0.2.tgz#a86e00bbde8950364f8e7846687259ffcd96e8c2"
   integrity sha512-lPG6KlZs88gef6aD85z3HNkztpj7w2R7HmR3gygjfXCQmsLloWNARFkMuzKiiY8FGdh1XDpgBdrSf4aKDiA7Kg==
+
+"@types/js-cookie@^3.0.3":
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/@types/js-cookie/-/js-cookie-3.0.4.tgz#23475b6d3b03acc84192e7c24da88eb38c1039ef"
+  integrity sha512-vMMnFF+H5KYqdd/myCzq6wLDlPpteJK+jGFgBus3Da7lw+YsDmx2C8feGTzY2M3Fo823yON+HC2CL240j4OV+w==
 
 "@types/json5@^0.0.29":
   version "0.0.29"
@@ -1882,6 +1915,11 @@ class-variance-authority@^0.7.0:
   integrity sha512-jFI8IQw4hczaL4ALINxqLEXQbWcNjoSkloa4IaufXCJr6QawJyw7tuRysRsrE8w2p/4gGaxKIt/hX3qz/IbD1A==
   dependencies:
     clsx "2.0.0"
+
+classnames@^2.3.2:
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.3.2.tgz#351d813bf0137fcc6a76a16b88208d2560a0d924"
+  integrity sha512-CSbhY4cFEJRe6/GQzIk5qXZ4Jeg5pcsP7b5peFSDpffpe1cqjASH/n9UTjBwOp6XpMSTwQ8Za2K5V02ueA7Tmw==
 
 cli-color@^2.0.0:
   version "2.0.3"
@@ -3297,6 +3335,11 @@ jiti@^1.18.2:
   resolved "https://registry.yarnpkg.com/jiti/-/jiti-1.20.0.tgz#2d823b5852ee8963585c8dd8b7992ffc1ae83b42"
   integrity sha512-3TV69ZbrvV6U5DfQimop50jE9Dl6J8O1ja1dvBbMba/sZ3YBEQqJ2VZRoQPVnhlzjNtU1vaXRZVrVjU4qtm8yA==
 
+jose@^4.15.2:
+  version "4.15.2"
+  resolved "https://registry.yarnpkg.com/jose/-/jose-4.15.2.tgz#61f97383f0b433d45da26d35094155a30a672d92"
+  integrity sha512-IY73F228OXRl9ar3jJagh7Vnuhj/GzBunPiZP13K0lOl7Am9SoWW3kEzq3MCllJMTtZqHTiDXQvoRd4U95aU6A==
+
 js-cookie@3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/js-cookie/-/js-cookie-3.0.1.tgz#9e39b4c6c2f56563708d7d31f6f5f21873a92414"
@@ -4036,6 +4079,11 @@ postgres-interval@^1.1.0:
   integrity sha512-9ZhXKM/rw350N1ovuWHbGxnGh/SNJ4cnxHiM0rxE4VN41wsg8P8zWn9hv/buK00RP4WvlOyr/RBDiptyxVbkZQ==
   dependencies:
     xtend "^4.0.0"
+
+preact@^10.13.1:
+  version "10.18.1"
+  resolved "https://registry.yarnpkg.com/preact/-/preact-10.18.1.tgz#3b84bb305f0b05f4ad5784b981d15fcec4e105da"
+  integrity sha512-mKUD7RRkQQM6s7Rkmi7IFkoEHjuFqRQUaXamO61E6Nn7vqF/bo7EZCmSyrUnp2UWHw0O7XjZ2eeXis+m7tf4lg==
 
 prelude-ls@^1.2.1:
   version "1.2.1"

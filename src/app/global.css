@@ -83,3 +83,9 @@
   background-color: #dadada;
   border-radius: 3px;
 }
+:root {
+  --border-radius: 20px;
+  --brand-color: #2a2828;
+  --brand-color-shade-1: #363333;
+  --brand-color-shade-2: #2d2a2a;
+}

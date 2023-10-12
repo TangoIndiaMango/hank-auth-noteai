@@ -3,13 +3,28 @@
 import { db } from "@/lib/db"
 import { $notes } from "@/lib/db/schema"
 import { generateImage, generateImagePropmt } from "@/lib/openai"
-import { auth } from "@clerk/nextjs"
 import { NextResponse } from "next/server"
+import { cookies } from "next/headers";
+import * as jose from "jose";
+import { redirect } from "next/navigation";
+// export const runtime = "edge";
 
-export const runtime = "edge";
+export async function userID() {
+    
+    try {
+        const token = cookies().get("hanko")?.value;
+        const payload = jose.decodeJwt(token ?? "");
+        // console.log(payload)
+        return payload.sub;
+    } catch (error) {
+        console.log(error)
+        redirect("/login")
+    }
+  }
+  
 
 export async function POST(req: Request) {
-    const { userId } = auth()
+    const  userId  = await userID()
     if (!userId) {
         return new NextResponse("unauthorized", { status: 401 })
     }
@@ -30,7 +45,7 @@ export async function POST(req: Request) {
 
     const notes_ids = await db.insert($notes).values({
         name,
-        userId,
+        userId: userId,
         imageUrl: image_url,
     }).returning({
         insertedId: $notes.id
