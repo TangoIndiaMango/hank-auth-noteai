@@ -25,7 +25,7 @@ const DashBoardPage = async (props: Props) => {
 
 
     const userId = await userID()
-
+    
     // console.log(userId)
 
     // getEmail()
@@ -53,28 +53,9 @@ const DashBoardPage = async (props: Props) => {
                     </div>
 
                     <div className="mt-4 md:mt-0 flex space-x-4">
-                        <button data-ripple-light="true" data-tooltip="Profile" className="bg-slate-600 rounded-full p-2">
-                            <Profile />
-                        </button>
-                        <div
-                            data-tooltip-target="Profile"
-                            data-tooltip-placement="top"
-                            className="absolute z-50 whitespace-normal break-words rounded-lg bg-black py-1.5 px-3 font-sans text-sm font-normal text-white focus:outline-none"
-                        >
-                            Profile
-                        </div>
-                        <button data-ripple-light="true" data-tooltip="Logout"className="bg-slate-600 rounded-full p-2">
-                            <Logout />
-                        </button>
-                        <div
-                            data-tooltip-target="Logout"
-                            data-tooltip-placement="top"
-                            className="absolute z-50 whitespace-normal break-words rounded-lg bg-black py-1.5 px-3 font-sans text-sm font-normal text-white focus:outline-none"
-                        >
-                            Logout
-                        </div>
+                        <Profile />
+                        <Logout />
                     </div>
-
                 </div>
 
 
