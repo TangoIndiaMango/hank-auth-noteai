@@ -53,20 +53,22 @@ const DashBoardPage = async (props: Props) => {
                     </div>
 
                     <div className="mt-4 md:mt-0 flex space-x-4">
-                        <div data-ripple-light="true" data-tooltip="Profile">
+                        <button data-ripple-light="true" data-tooltip="Profile" className="bg-slate-600 rounded-full p-2">
                             <Profile />
-                        </div>
+                        </button>
                         <div
                             data-tooltip-target="Profile"
+                            data-tooltip-placement="top"
                             className="absolute z-50 whitespace-normal break-words rounded-lg bg-black py-1.5 px-3 font-sans text-sm font-normal text-white focus:outline-none"
                         >
                             Profile
                         </div>
-                        <div data-ripple-light="true" data-tooltip="Logout">
+                        <button data-ripple-light="true" data-tooltip="Logout"className="bg-slate-600 rounded-full p-2">
                             <Logout />
-                        </div>
+                        </button>
                         <div
                             data-tooltip-target="Logout"
+                            data-tooltip-placement="top"
                             className="absolute z-50 whitespace-normal break-words rounded-lg bg-black py-1.5 px-3 font-sans text-sm font-normal text-white focus:outline-none"
                         >
                             Logout
