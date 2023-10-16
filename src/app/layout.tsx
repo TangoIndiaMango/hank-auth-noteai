@@ -5,10 +5,10 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
+export const dynamic = "force-dynamic"
 export const metadata = {
   title: 'NotesAI',
 }
-
 export default function RootLayout({
   children,
 }: {

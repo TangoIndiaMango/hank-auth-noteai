@@ -7,10 +7,13 @@ import { NextResponse } from "next/server"
 import { cookies } from "next/headers";
 import * as jose from "jose";
 import { redirect } from "next/navigation";
+import { cache } from "react";
 // export const runtime = "edge";
+export const dynamic = "force-dynamic"
+export const revalidate = 3600 
 
-export async function userID() {
-    
+export const userID = cache(async() => {
+
     try {
         const token = cookies().get("hanko")?.value;
         const payload = jose.decodeJwt(token ?? "");
@@ -20,11 +23,11 @@ export async function userID() {
         console.log(error)
         redirect("/login")
     }
-  }
-  
+})
+
 
 export async function POST(req: Request) {
-    const  userId  = await userID()
+    const userId = await userID()
     if (!userId) {
         return new NextResponse("unauthorized", { status: 401 })
     }

@@ -1,39 +1,31 @@
+
 import CreateNoteDialog from '@/components/CreateNoteDialog';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { db } from '@/lib/db';
 import { $notes } from '@/lib/db/schema';
-
 import { eq } from 'drizzle-orm';
 import { ArrowLeft } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import React from 'react'
-import ClipLoader from 'react-spinners/ClipLoader';
 import { toast } from 'react-toastify';
 import { userID } from '../api/createNoteBook/route';
 import { Profile } from '@/components/Profile';
 import { Logout } from '@/components/Logout';
-import { Hanko } from "@teamhanko/hanko-elements";
-import { hankoApi } from '@/components/Login';
+
+export const revalidate = 3600 // revalidate the data at most every hour
 
 
-const hanko = new Hanko(hankoApi);
+export const dynamic = "force-dynamic"
+
 type Props = {}
-
-// const getEmail = async () => {
-//     const userData = await hanko?.user.getCurrent();
-//     const email = userData.email
-
-//     console.log("user Data:", userData);
-//     console.log("email:", email);
-// }
-
 const DashBoardPage = async (props: Props) => {
 
 
     const userId = await userID()
+    
     // console.log(userId)
 
     // getEmail()
@@ -101,6 +93,6 @@ const DashBoardPage = async (props: Props) => {
             </div>
         </div>
     )
-}
+};
 
 export default DashBoardPage;

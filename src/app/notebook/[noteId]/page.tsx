@@ -5,7 +5,6 @@ import React from 'react'
 import { eq, and } from "drizzle-orm";
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { clerk } from '@/lib/clerk-server'
 import TipTapEditor from '@/components/TipTapEditor'
 import DeleteButton from '@/components/DeleteButton'
 import { toast } from 'react-toastify'
@@ -54,7 +53,7 @@ const NoteBookPage = async ({ params: { noteId } }: Props) => {
                     </Link>
 
                     <div className='w-3'></div>
-                    <span className='font-semibold'>Welcome</span>
+                    <span className='font-semibold text-md'>Welcome</span>
                     <span className='inline-block mx-1'>/</span>
                     <span className='text-stone-900 font-semibold'>{note.name}</span>
                     <div className="ml-auto">

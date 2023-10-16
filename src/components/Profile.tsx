@@ -1,9 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
-import { register } from "@teamhanko/hanko-elements";
+import { Hanko, register } from "@teamhanko/hanko-elements";
 import { hankoApi } from "./Login";
 import { User2 } from "lucide-react";
-
 
 
 export const Profile = () => {
@@ -23,8 +22,6 @@ export const Profile = () => {
   const closeProfile = () => {
     setOpenState(false);
   };
-
-
 
 
   return (
