@@ -31,14 +31,14 @@ export const Profile = () => {
     </button>
     {openState && (
         <div
-          className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-800 bg-opacity-50"
-        //   onClick={closeProfile} // Close the modal when clicking outside
+          className="fixed top-0 left-0 w-full h-full flex overflow-scroll items-center justify-center bg-gray-800 bg-opacity-50"
+          onClick={closeProfile} // Close the modal when clicking outside
         >
           <div
-            className="w-[450px] h-auto rounded-2xl bg-white p-5"
+            className="w-[450px] h-fit-content overflow-scroll rounded-2xl bg-white p-5"
           >
             <hanko-profile/>
-            <button type="button" onClick={closeProfile}>
+            <button type="button" className="shadow-md rounded-md" onClick={closeProfile}>
               Close
             </button>
           </div>

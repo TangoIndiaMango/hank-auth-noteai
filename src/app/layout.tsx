@@ -1,4 +1,3 @@
-import { ClerkProvider } from '@clerk/nextjs'
 import './global.css'
 import Provider from '@/components/Provider'
 import { ToastContainer } from 'react-toastify';
