@@ -2,7 +2,8 @@
 import { useEffect, useState } from "react";
 import { Hanko, register } from "@teamhanko/hanko-elements";
 import { hankoApi } from "./Login";
-import { User2 } from "lucide-react";
+import { User2, XCircle } from "lucide-react";
+import { Button } from "./ui/button";
 
 
 export const Profile = () => {
@@ -14,7 +15,7 @@ export const Profile = () => {
     });
   }, []);
 
- 
+
   const openProfile = () => {
     setOpenState(true);
   };
@@ -26,24 +27,25 @@ export const Profile = () => {
 
   return (
     <>
-    <button type="button" onClick={openProfile}>
-      <User2 className="w-10 h-8 bg-slate-300 rounded-md shadow-md" />
-    </button>
-    {openState && (
+      <button type="button" onClick={openProfile}>
+        <User2 className="w-10 h-8 bg-slate-300 rounded-md shadow-md" />
+      </button>
+      {openState && (
         <div
-          className="fixed top-0 left-0 w-full h-full flex overflow-scroll items-center justify-center bg-gray-800 bg-opacity-50"
-          onClick={closeProfile} // Close the modal when clicking outside
+          className="fixed top-0 left-0 w-full h-full flex overflow-y-scroll items-center justify-center bg-gray-800 bg-opacity-50"
+        // onClick={closeProfile} // Close the modal when clicking outside
         >
           <div
-            className="w-[450px] h-fit-content overflow-scroll rounded-2xl bg-white p-5"
+            className="w-[450px] h-fit-content overflow-y-scroll rounded-2xl bg-white p-5"
           >
-            <hanko-profile/>
-            <button type="button" className="shadow-md rounded-md" onClick={closeProfile}>
+            <hanko-profile />
+            <Button className="bg-slate-300 shadow-sm rounded-md p-3" size="sm" onClick={closeProfile}>
+              <XCircle className="mr-1 w-4 h-4" />
               Close
-            </button>
+            </Button>
           </div>
         </div>
       )}
-  </>
+    </>
   );
 };
