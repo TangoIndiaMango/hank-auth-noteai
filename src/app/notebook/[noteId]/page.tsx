@@ -8,7 +8,6 @@ import { Button } from '@/components/ui/button'
 import TipTapEditor from '@/components/TipTapEditor'
 import DeleteButton from '@/components/DeleteButton'
 import { toast } from 'react-toastify'
-import ClipLoader from "react-spinners/ClipLoader";
 import { userID } from '@/app/api/createNoteBook/route'
 
 

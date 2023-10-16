@@ -8,7 +8,9 @@ import { cookies } from "next/headers";
 import * as jose from "jose";
 import { redirect } from "next/navigation";
 import { cache } from "react";
-// export const runtime = "edge";
+
+
+export const runtime = "edge";
 export const dynamic = "force-dynamic"
 export const revalidate = 3600 
 
