@@ -36,10 +36,10 @@ export const Profile = () => {
         // onClick={closeProfile} // Close the modal when clicking outside
         >
           <div
-            className="w-[450px] h-fit-content overflow-y-scroll rounded-2xl bg-white p-5"
+            className="w-[500px] h-fit-content rounded-2xl bg-white p-5"
           >
             <hanko-profile />
-            <Button className="bg-slate-300 shadow-sm rounded-md p-3" size="sm" onClick={closeProfile}>
+            <Button className="bg-slate-500 shadow-sm rounded-md p-3" size="sm" onClick={closeProfile}>
               <XCircle className="mr-1 w-4 h-4" />
               Close
             </Button>
